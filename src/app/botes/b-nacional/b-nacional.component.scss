@@ -1,0 +1,69 @@
+.formulario {
+  width: 45vw;
+  border-color: #007ac0;
+}
+
+.cierra {
+  background-color: gray;
+}
+
+.input {
+  width: 20vw;
+  margin-top: 30px;
+  margin-left: 40px;
+  mat-label {
+    color: #007ac0;
+  }
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 10vh;
+  button{
+    background-color: #007ac0;
+  }
+}
+
+#corto {
+  width: 15vw;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10vh;
+  font-size: 25px;
+  font-weight: 500;
+  color: #007ac0;
+}
+
+.fecha{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  button{
+    background-color: #007ac0;
+    margin-left: 10px;
+  }
+}
+
+.extra{
+  visibility:hidden;
+}
+
+.aparece{
+  visibility: visible;
+  width: 20vw;
+  margin-top: 30px;
+  margin-left: 40px;
+  mat-label {
+    color: #007ac0;
+  }
+}

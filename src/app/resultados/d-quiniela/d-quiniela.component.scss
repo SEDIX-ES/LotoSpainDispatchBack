@@ -1,0 +1,87 @@
+.formulario {
+  width: 55vw;
+  height: fit-content;
+  border-color: #cb1517;
+}
+
+.cierra {
+  background-color: gray;
+}
+
+.input {
+  width: 10vw;
+  margin-top: 30px;
+  margin-left: 40px;
+  mat-label {
+    color: #cb1517;
+  }
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 10vh;
+  button{
+    background-color: #cb1517;
+  }
+}
+
+#corto {
+  width: 7vw;
+}
+
+.superindice {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  font-size: 25px;
+  font-weight: 500;
+  color: #cb1517;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 30px;
+  font-size: larger;
+  font-weight: bolder;
+  p{
+    margin-top: 25px;
+  }
+}
+
+.partido{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  align-items: center;
+}
+
+.resultado{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  align-items: center;
+}
+
+.fecha{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  button{
+    background-color: #cb1517;
+    margin-left: 10px;
+  }
+}

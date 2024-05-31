@@ -1,0 +1,39 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <div class="titulo">EL GORDO</div>
+
+  <div class="fecha">
+    <mat-form-field class="input">
+      <mat-label>Fecha:</mat-label>
+      <input matInput formControlName="fecha" readonly>
+    </mat-form-field>
+    </div>
+
+  <mat-form-field class="input" *ngFor="let serie of [1, 2, 3, 4, 5]">
+    <mat-label *ngIf="serie==1||serie==3"> {{ serie }}<span class="superindice">er</span> número: </mat-label>
+    <mat-label *ngIf="serie!=1&&serie!=3"> {{ serie }}º número: </mat-label>
+    <mat-select formControlName="comb{{ serie }}">
+      <mat-option *ngFor="let numero of numeros" [value]="numero">{{numero}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="publicacionForm.get('comb' + serie)?.invalid && publicacionForm.get('comb' + serie)?.touched">
+      La combinación es inválida.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input" id="corto">
+    <mat-label> Nº clave: </mat-label>
+    <mat-select formControlName="clave">
+      <mat-option *ngFor="let numero of numerosE" [value]="numero">{{numero}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="publicacionForm.get('clave')?.invalid && publicacionForm.get('clave')?.touched">
+      El número clave es necesario.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="botones">
+    <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+      (click)="onSubmit()">Enviar</button>
+    <button mat-raised-button color="primary" (click)='closeDialog()' class="cierra">Cerrar</button>
+    <button mat-raised-button color="primary" (click)='eliminarGordo()' class="delete">Eliminar</button>
+  </div>
+
+</form>

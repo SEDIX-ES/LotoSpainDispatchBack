@@ -1,0 +1,27 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <div class="titulo">EURODREAMS</div>
+
+  <div class="fecha">
+  <mat-form-field class="input">
+    <mat-label>Fecha:</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fecha">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+    <button mat-raised-button color="primary" (click)='agregarFecha()'>Hoy</button>
+  </div>
+  <mat-form-field class="input">
+    <mat-label> Bote: </mat-label>
+    <input matInput type="text" formControlName="numero">
+    <mat-error *ngIf="publicacionForm.get('numero')?.invalid && publicacionForm.get('numero')?.touched">
+      El número de sorteo es necesario.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="botones">
+    <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+      (click)="onSubmit()">Enviar</button>
+    <button mat-raised-button color="primary" (click)='closeDialog()'>Cerrar</button>
+  </div>
+
+</form>

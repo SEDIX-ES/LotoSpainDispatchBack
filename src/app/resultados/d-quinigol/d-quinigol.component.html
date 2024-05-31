@@ -1,0 +1,73 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <div class="titulo">EL QUINIGOL</div>
+  <mat-dialog-content>
+
+    <div class="fecha">
+      <mat-form-field class="input">
+        <mat-label>Fecha:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)='agregarFecha()'>Ayer</button>
+    </div>
+
+    <mat-form-field class="input">
+      <mat-label> Jornada: </mat-label>
+      <input matInput type="text" formControlName="jornada">
+      <mat-error *ngIf="publicacionForm.get('jornada')?.invalid && publicacionForm.get('jornada')?.touched">
+        La jornada es necesaria.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="row" *ngFor="let item of numeros">
+      <div class="partido">
+        <p><span *ngIf="item==15">P.</span>{{item}}</p>
+        <mat-form-field class="input">
+          <mat-label> Equipo 1: </mat-label>
+          <input matInput type="text" formControlName="equipo1{{item}}">
+          <mat-error
+            *ngIf="publicacionForm.get('equipo1{{item}}')?.invalid && publicacionForm.get('equipo1{{item}}')?.touched">
+            El equipo local es necesario.
+          </mat-error>
+        </mat-form-field>
+        <p>-</p>
+        <mat-form-field class="input">
+          <mat-label> Equipo 2: </mat-label>
+          <input matInput type="text" formControlName="equipo2{{item}}">
+          <mat-error
+            *ngIf="publicacionForm.get('equipo2{{item}}')?.invalid && publicacionForm.get('equipo2{{item}}')?.touched">
+            El equipo visitante es necesario.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="resultado">
+        <mat-form-field class="input" id="corto">
+          <mat-label> Marcador 1: </mat-label>
+          <input matInput type="number" formControlName="marcador1{{item}}">
+          <mat-error
+            *ngIf="publicacionForm.get('marcador1{{item}}')?.invalid && publicacionForm.get('marcador1{{item}}')?.touched">
+            El marcador local es necesario.
+          </mat-error>
+        </mat-form-field>
+        <p>-</p>
+        <mat-form-field class="input" id="corto">
+          <mat-label> Marcador 2: </mat-label>
+          <input matInput type="number" formControlName="marcador2{{item}}">
+          <mat-error
+            *ngIf="publicacionForm.get('marcador2{{item}}')?.invalid && publicacionForm.get('marcador2{{item}}')?.touched">
+            El marcador visitante es necesario.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="botones">
+      <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+        (click)="onSubmit()">Enviar</button>
+      <button mat-raised-button color="primary" (click)='closeDialog()' class="cierra">Cerrar</button>
+    </div>
+  </mat-dialog-content>
+
+</form>

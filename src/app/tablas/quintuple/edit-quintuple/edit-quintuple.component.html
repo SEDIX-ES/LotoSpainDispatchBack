@@ -1,0 +1,32 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <div class="titulo">QUÍNTUPLE PLUS</div>
+
+  <div class="fecha">
+    <mat-form-field class="input">
+      <mat-label>Fecha:</mat-label>
+      <input matInput formControlName="fecha" readonly>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="input">
+    <mat-label> Jornada: </mat-label>
+    <input matInput type="text" formControlName="jornada" readonly>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="input" *ngFor="let serie of numeros">
+    <mat-label *ngIf="serie!=6"> {{serie}}. Carrera {{serie}}: </mat-label>
+    <mat-label *ngIf="serie==6"> {{serie}}. Carrera 5 (2º puesto): </mat-label>
+    <input matInput type="text" formControlName="comb{{serie}}" maxlength="2">
+    <mat-error *ngIf="publicacionForm.get('comb' + serie)?.invalid && publicacionForm.get('comb' + serie)?.touched">
+      La combinación es necesaria.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="botones">
+    <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+      (click)="onSubmit()">Enviar</button>
+    <button mat-raised-button color="primary" (click)='closeDialog()' class="cierra">Cerrar</button>
+    <button mat-raised-button color="primary" (click)='eliminarQuintuple()' class="delete">Eliminar</button>
+  </div>
+
+</form>

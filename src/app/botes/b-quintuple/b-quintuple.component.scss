@@ -1,0 +1,55 @@
+.formulario {
+  width: 45vw;
+  border-color: #eab842;
+}
+
+.cierra {
+  background-color: gray;
+}
+
+.input {
+  width: 20vw;
+  margin-top: 30px;
+  margin-left: 40px;
+  mat-label {
+    color: #eab842;
+  }
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 10vh;
+  button{
+    background-color: #eab842;
+  }
+}
+
+#corto {
+  width: 15vw;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10vh;
+  font-size: 25px;
+  font-weight: 500;
+  color: #eab842;
+}
+
+.fecha{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  button{
+    background-color: #eab842;
+    margin-left: 10px;
+  }
+}

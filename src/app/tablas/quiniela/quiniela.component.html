@@ -1,0 +1,34 @@
+<div class="body">
+  <div class="header">
+    <div class="header__text"> Quiniela</div>
+    <div class="btn_wrapper">
+      <button class="header__btn" (click)="generarGanador()">Nuevo ganador</button>
+      <button class="header__btn" (click)="generarBote()">Nuevo bote</button>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="ganadores">
+      JORNADAS
+      <div class="ganador" *ngFor="let item of bonoloto">
+        <div class="head">
+          <div class="logo"></div>
+          <p>QUINIELA</p>
+          <p>Jornada {{item.jornada}}ª - {{item.fecha | date: 'shortDate' }}</p>
+          <mat-icon (click)="abrirDetalles(item)">add</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="botes">
+      BOTES
+      <div class="bote" *ngFor="let item of botes">
+        <div class="head">
+          <div class="logo"></div>
+          <p>QUINIELA</p>
+          <p>Jornada {{item.jornada}}ª - {{item.fecha | date: 'shortDate' }}</p>
+          <mat-icon (click)="eliminarBote(item)">delete</mat-icon>
+        </div>
+        <div class="bote__cantidad">{{millones(item.cantidad)}}</div>
+      </div>
+    </div>
+  </div>
+</div>

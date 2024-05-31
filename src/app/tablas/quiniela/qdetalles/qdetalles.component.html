@@ -1,0 +1,28 @@
+<div class="contenedor">
+  <div class="ganador">
+    <div class="head">
+      <div class="logo"></div>
+      <p>QUINIELA</p>
+      <p>Jornada {{data.jornada}}ª - {{data.fecha | date: 'shortDate' }}</p>
+      <mat-icon>add</mat-icon>
+    </div>
+    <div class="ganador__combinacion">
+      <div class="combi">
+        <div class="partido" *ngFor="let partido of data.partidos; let  i = index">
+          <p *ngIf="(i+1)!=15">{{i+1}}.{{partido.local}}</p>
+          <p *ngIf="(i+1)==15">P{{i+1}}.{{partido.local}}</p>
+          <p>-</p>
+          <p>{{partido.visitante}}</p>
+          <p class="partido__marcador">{{partido.resultado}}</p>
+          <p class="partido__resultado" *ngIf="(i+1)!=15">{{obtenerResultado(partido.resultado)}}</p>
+          <p class="partido__resultado" *ngIf="(i+1)==15">{{obtenerPleno(partido.resultado)}}</p>
+          <mat-icon (click)="editarPartido(partido)">add</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="botones">
+    <button mat-raised-button class="boton" (click)="closeDialog()">Cerrar</button>
+    <button mat-raised-button class="delete" (click)="eliminarQuiniela()">Eliminar</button>
+  </div>
+</div>

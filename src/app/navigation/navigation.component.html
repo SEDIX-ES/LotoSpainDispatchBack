@@ -1,0 +1,109 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'over'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="title"><span class="titulo">LOTO
+        SPAIN</span></mat-toolbar>
+    <mat-nav-list>
+      <div class="sidenav__item" id="inicio">
+        <div class="sidenav__item" id="row" (click)="navigateToInicio()">
+          <mat-icon>home</mat-icon> <span class="menu">Inicio</span>
+        </div>
+      </div>
+
+      <div class="sidenav__item" id="tienda" (click)="navigateToBonoloto()">
+        <div class="sidenav__block" id="row">
+          <div class="logo bonoloto"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Bonoloto</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToEuromillones()">
+        <div class="sidenav__block" id="row">
+          <div class="logo euromillones"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Euromillones</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToEurodreams()">
+        <div class="sidenav__block" id="row">
+          <div class="logo eurodreams"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Eurodreams</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToGordo()">
+        <div class="sidenav__block" id="row">
+          <div class="logo gordo"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">El Gordo</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToPrimitiva()">
+        <div class="sidenav__block" id="row">
+          <div class="logo primitiva"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">La Primitiva</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToQuiniela()">
+        <div class="sidenav__block" id="row">
+          <div class="logo quiniela"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">La Quiniela</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToQuinigol()">
+        <div class="sidenav__block" id="row">
+          <div class="logo quinigol"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Quinigol</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToQuintuple()">
+        <div class="sidenav__block" id="row">
+          <div class="logo quintuple"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Quíntuple</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToNacional()">
+        <div class="sidenav__block" id="row">
+          <div class="logo nacional"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Lotería Nacional</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav__item" id="tienda" (click)="navigateToLototurf()">
+        <div class="sidenav__block" id="row">
+          <div class="logo lototurf"></div>
+          <div class="sidenav__item__text">
+            <span class="menu">Lototurf</span>
+          </div>
+        </div>
+      </div>
+    </mat-nav-list>
+    <div class="container">
+      <button type="button" (click)="logout()" class="logout">Cerrar Sesión</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="header">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span></span>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

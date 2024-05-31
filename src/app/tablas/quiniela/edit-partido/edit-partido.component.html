@@ -1,0 +1,61 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <mat-dialog-content>
+
+    <mat-form-field class="input">
+      <mat-label>Fecha:</mat-label>
+      <input matInput formControlName="fecha" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="input">
+      <mat-label> Jornada: </mat-label>
+      <input matInput type="text" formControlName="jornada" readonly>
+    </mat-form-field>
+
+
+    <div class="row">
+      <div class="partido">
+        <mat-form-field class="input">
+          <mat-label> Equipo 1: </mat-label>
+          <input matInput type="text" formControlName="equipo1">
+          <mat-error *ngIf="publicacionForm.get('equipo1')?.invalid && publicacionForm.get('equipo1')?.touched">
+            El equipo local es necesario.
+          </mat-error>
+        </mat-form-field>
+        <p>-</p>
+        <mat-form-field class="input">
+          <mat-label> Equipo 2: </mat-label>
+          <input matInput type="text" formControlName="equipo2">
+          <mat-error *ngIf="publicacionForm.get('equipo2')?.invalid && publicacionForm.get('equipo2')?.touched">
+            El equipo visitante es necesario.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="resultado">
+        <mat-form-field class="input" id="corto">
+          <mat-label> Marcador 1: </mat-label>
+          <input matInput type="number" formControlName="marcador1">
+          <mat-error *ngIf="publicacionForm.get('marcador1')?.invalid && publicacionForm.get('marcador1')?.touched">
+            El marcador local es necesario.
+          </mat-error>
+        </mat-form-field>
+        <p>-</p>
+        <mat-form-field class="input" id="corto">
+          <mat-label> Marcador 2: </mat-label>
+          <input matInput type="number" formControlName="marcador2">
+          <mat-error *ngIf="publicacionForm.get('marcador2')?.invalid && publicacionForm.get('marcador2')?.touched">
+            El marcador visitante es necesario.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="botones">
+      <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+        (click)="onSubmit()">Enviar</button>
+      <button mat-raised-button color="primary" (click)='closeDialog()' class="cierra">Cerrar</button>
+      <button mat-raised-button class="delete" (click)="eliminarPartido()">Eliminar</button>
+    </div>
+  </mat-dialog-content>
+
+</form>

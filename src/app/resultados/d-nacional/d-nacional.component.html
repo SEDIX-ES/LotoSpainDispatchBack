@@ -1,0 +1,64 @@
+<form [formGroup]="publicacionForm" class="formulario">
+  <div class="titulo">LOTERÍA NACIONAL</div>
+
+  <div class="fecha">
+    <mat-form-field class="input">
+      <mat-label>Fecha:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+      <button mat-raised-button color="primary" (click)='agregarFecha()'>Ayer</button>
+    </div>
+
+ <mat-form-field class="input">
+    <mat-label> Tipo: </mat-label>
+    <mat-select formControlName="tipo" (selectionChange)="comprobarExtra()">
+      <mat-option *ngFor="let numero of tipo" [value]="numero">{{numero}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="publicacionForm.get('tipo')?.invalid && publicacionForm.get('tipo')?.touched">
+      El tipo es necesario.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="extra" [ngClass]="{'aparece':extra}">
+    <mat-label> Nombre extraordinario: </mat-label>
+    <input matInput type="text" formControlName="nombreExtra">
+    <mat-error *ngIf="publicacionForm.get('nombreExtra')?.invalid && publicacionForm.get('nombreExtra')?.touched">
+      El nombre extraordinario es inválido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label> 1er PREMIO: </mat-label>
+    <input matInput type="text" formControlName="ganador1" required pattern="\d{5}" maxlength="5">
+    <mat-error *ngIf="publicacionForm.get('ganador1')?.invalid && publicacionForm.get('ganador1')?.touched">
+      El número premiado es inválido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label> 2º PREMIO: </mat-label>
+    <input matInput type="text" formControlName="ganador2" required pattern="\d{5}" maxlength="5">
+    <mat-error *ngIf="publicacionForm.get('ganador2')?.invalid && publicacionForm.get('ganador2')?.touched">
+      El número premiado es inválido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input" id="corto" *ngFor="let reint of [1, 2, 3]">
+    <mat-label> Reintegro {{reint}}: </mat-label>
+    <mat-select formControlName="reint{{reint}}">
+      <mat-option *ngFor="let numero of numerosE" [value]="numero">{{numero}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="publicacionForm.get('reint' + reint)?.invalid && publicacionForm.get('reint' + reint)?.touched">
+      El número clave es necesario.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="botones">
+    <button mat-raised-button color="primary" type="submit" [disabled]="publicacionForm.invalid"
+      (click)="onSubmit()">Enviar</button>
+    <button mat-raised-button color="primary" (click)="closeDialog()" class="cierra">Cerrar</button>
+  </div>
+
+</form>
